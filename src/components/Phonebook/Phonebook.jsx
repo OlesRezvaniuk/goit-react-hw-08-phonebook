@@ -30,13 +30,15 @@ export class Phonebook extends Component {
 
   changeFilter = e => {
     this.setState({ filter: e.currentTarget.value });
+    console.log(this.state.filter);
+    console.log(this.state.contacts.includes(this.state.filter));
   };
 
-  visibleContacts() {
-    this.setState.contacts.filter(contact =>
-      contact.text.toLowerCase().includes(this.state.filter.toLowerCase())
-    );
-  }
+  // visibleContacts() {
+  //   this.setState.contacts.filter(contact =>
+  //     contact.text.toLowerCase().includes(this.state.filter.toLowerCase())
+  //   );
+  // }
 
   handleNameAdd = e => {
     e.preventDefault();
@@ -48,6 +50,9 @@ export class Phonebook extends Component {
   };
 
   render() {
+    const filteredUsers = this.state.contacts.filter(user =>
+      user.name.toLowerCase().includes(this.state.filter.toLowerCase())
+    );
     return (
       <>
         <h1>Phonebook</h1>
@@ -106,3 +111,27 @@ export class Phonebook extends Component {
     );
   }
 }
+
+// const contactsS = [
+//   { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
+//   { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
+//   { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
+//   { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+// ];
+
+// console.log(contactsS);
+
+// function omg() {
+//   contactsS.filter(contact =>
+//     contact.name.toLowerCase().includes([0].name.dsas)
+//   );
+//   console.log(contactsS);
+// }
+
+// omg();
+
+// visibleContacts() {
+//   this.setState.contacts.filter(contact =>
+//     contact.text.toLowerCase().includes(this.state.filter.toLowerCase())
+//   );
+// }
