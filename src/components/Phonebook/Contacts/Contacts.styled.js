@@ -28,10 +28,9 @@ export const ContactItem = styled.li`
   text-align: start;
   padding: 2px;
   border-radius: 2px;
-  &:nth-child(odd) {
+  &:nth-of-type(odd) {
     background-color: #ffffff21;
   }
-  &
 `;
 
 export const ContactTel = styled.span`

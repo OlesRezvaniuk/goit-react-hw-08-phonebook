@@ -7,12 +7,15 @@ import {
   ContactItem,
   ContactTel,
   ContactBtn,
+  NotTitle,
 } from './Contacts.styled';
 
-export const Contacts = ({ onFilteredUers, onDeleteContact }) => {
+export const Contacts = ({ onFilteredUers, onDeleteContact, onLength }) => {
   return (
     <>
-      <ContactsTitle>Contacts</ContactsTitle>
+      <ContactsTitle>
+        {onLength === 0 ? 'There is no contacts' : 'Contacts'}
+      </ContactsTitle>
       <ContactsList>
         {onFilteredUers.map(item => {
           return (
@@ -36,6 +39,6 @@ export const Contacts = ({ onFilteredUers, onDeleteContact }) => {
 };
 
 Contacts.propTypes = {
-  onFilteredUers: PropTypes.func.isRequired,
+  onFilteredUsers: PropTypes.func,
   onDeleteContact: PropTypes.func.isRequired,
 };

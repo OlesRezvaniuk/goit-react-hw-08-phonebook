@@ -51,8 +51,8 @@ export const Form = ({
 };
 
 Form.propTypes = {
-  onName: PropTypes.func.isRequired,
-  onPhone: PropTypes.func.isRequired,
-  onHandleIncrement: PropTypes.func.isRequired,
-  onHandleDecrement: PropTypes.func.isRequired,
+  onName: PropTypes.string.isRequired,
+  onPhone: PropTypes.string,
+  onHandleIncrement: PropTypes.func,
+  onHandleDecrement: PropTypes.func,
 };

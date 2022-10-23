@@ -1,4 +1,5 @@
 // import { clear } from '@testing-library/user-event/dist/clear';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { Component } from 'react';
 import shortid from 'shortid';
 import { Form } from './Form/Form';
@@ -8,20 +9,8 @@ import { Contacts } from './Contacts/Contacts';
 import { PhoneBookBox } from './Phonebook.styled';
 
 export class Phonebook extends Component {
-  //   state = {
-  //     contacts: [],
-  //     name: '',
-  //     number: '',
-  //     filter: '',
-  //   };
-
   state = {
-    contacts: [
-      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-    ],
+    contacts: [],
     filter: '',
     name: '',
     number: '',
@@ -39,27 +28,33 @@ export class Phonebook extends Component {
   };
 
   handleNameAdd = e => {
-    // console.log(e.currentTarget.value);
     e.preventDefault();
-    const { name } = this.state;
-    const { number } = this.state;
-    const { contacts } = this.state;
+    const { name, number, contacts } = this.state;
     const newName = {
       name,
       number,
       id: shortid(),
     };
+    if (name === '') {
+      Notify.failure('You didnt enter a name');
+      return;
+    }
+    if (number === '') {
+      Notify.failure('You didnt enter a number');
+      return;
+    }
     if (contacts.some(contact => contact.name === name)) {
-      alert(`${name} is already in contacts`);
+      Notify.failure(`${name} is already in contacts`);
       return;
     }
     if (contacts.some(contact => contact.number === number)) {
       const filteredNumber = contacts.filter(
         contact => contact.number === number
       )[0].name;
-      alert(`${number} is already in contact with ${filteredNumber} `);
+      Notify.failure(`${number} is already in contact with ${filteredNumber} `);
       return;
     }
+
     this.setState(prevState => ({
       contacts: [...prevState.contacts, newName],
     }));
@@ -73,11 +68,10 @@ export class Phonebook extends Component {
   };
 
   render() {
-    // console.log(this.state.contacts);
     const filteredUsers = this.state.contacts.filter(user =>
       user.name.toLowerCase().includes(this.state.filter.toLowerCase())
     );
-
+    const length = this.state.contacts.length;
     return (
       <PhoneBookBox>
         <Form
@@ -94,32 +88,9 @@ export class Phonebook extends Component {
         <Contacts
           onFilteredUers={filteredUsers}
           onDeleteContact={this.deleteContact}
+          onLength={length}
         />
       </PhoneBookBox>
     );
   }
 }
-
-// const contactsS = [
-//   { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-//   { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-//   { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-//   { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-// ];
-
-// console.log(contactsS);
-
-// function omg() {
-//   contactsS.filter(contact =>
-//     contact.name.toLowerCase().includes([0].name.dsas)
-//   );
-//   console.log(contactsS);
-// }
-
-// omg();
-
-// visibleContacts() {
-//   this.setState.contacts.filter(contact =>
-//     contact.text.toLowerCase().includes(this.state.filter.toLowerCase())
-//   );
-// }
