@@ -11,7 +11,12 @@ export class Phonebook extends Component {
   //   };
 
   state = {
-    contacts: [],
+    contacts: [
+      // { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
+      // { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
+      // { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
+      // { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+    ],
     filter: '',
     name: '',
     number: '',
@@ -24,10 +29,12 @@ export class Phonebook extends Component {
     this.setState({ number: e.currentTarget.value });
   };
 
+  // const filteredUsers1 = this.state.contacts.filter(user =>
+  //   user.name.toLowerCase().includes(this.state.name.toLowerCase())
+  // );
+
   changeFilter = e => {
     this.setState({ filter: e.currentTarget.value });
-    console.log(this.state.filter);
-    console.log(this.state.contacts.includes(this.state.filter));
   };
 
   // visibleContacts() {
@@ -37,19 +44,45 @@ export class Phonebook extends Component {
   // }
 
   handleNameAdd = e => {
-    console.log(e.currentTarget.value);
+    // console.log(e.currentTarget.value);
     e.preventDefault();
     const { name } = this.state;
     const { number } = this.state;
+    const { contacts } = this.state;
+    const newName = {
+      name,
+      number,
+      id: shortid(),
+    };
+    if (contacts.some(contact => contact.name === name)) {
+      alert(`${name} is already in contacts`);
+      return;
+    }
+    if (contacts.some(contact => contact.number === number)) {
+      const filteredNumber = contacts.filter(
+        contact => contact.number === number
+      )[0].name;
+      alert(`${number} is already in contact with ${filteredNumber} `);
+      return;
+    }
     this.setState(prevState => ({
-      contacts: [...prevState.contacts, { name, number, id: shortid() }],
+      contacts: [...prevState.contacts, newName],
     }));
   };
 
+  deleteContact = id => {
+    const newContacts = this.state.contacts.filter(
+      contact => contact.id !== id
+    );
+    this.setState({ ...this.state, contacts: newContacts });
+  };
+
   render() {
+    // console.log(this.state.contacts);
     const filteredUsers = this.state.contacts.filter(user =>
       user.name.toLowerCase().includes(this.state.filter.toLowerCase())
     );
+
     return (
       <>
         <h1>Phonebook</h1>
@@ -93,6 +126,7 @@ export class Phonebook extends Component {
           />
         </label>
         <h2>Contacts</h2>
+
         <ul>
           {filteredUsers.map(item => {
             return (
@@ -100,6 +134,13 @@ export class Phonebook extends Component {
                 <h3>
                   {item.name} : <span>{item.number}</span>
                 </h3>
+                <button
+                  key={item.id}
+                  type="button"
+                  onClick={() => this.deleteContact(item.id)}
+                >
+                  Delete
+                </button>
               </li>
             );
           })}
