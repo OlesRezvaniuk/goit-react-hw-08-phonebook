@@ -41,20 +41,16 @@ export class Phonebook extends Component {
     } else if (number === '') {
       Notify.failure('You didnt enter a number');
       return;
-    }
-
-    if (contacts.some(contact => contact.name === name)) {
+    } else if (contacts.some(contact => contact.name === name)) {
       Notify.failure(`${name} is already in contacts`);
       return;
-    }
-    if (contacts.some(contact => contact.number === number)) {
+    } else if (contacts.some(contact => contact.number === number)) {
       const filteredNumber = contacts.filter(
         contact => contact.number === number
       )[0].name;
       Notify.failure(`${number} is already in contact with ${filteredNumber} `);
       return;
     }
-
     this.setState(prevState => ({
       contacts: [...prevState.contacts, newName],
     }));
@@ -73,53 +69,21 @@ export class Phonebook extends Component {
   };
 
   render() {
-    const filteredUsers = this.state.contacts.filter(user =>
-      user.name.toLowerCase().includes(this.state.filter.toLowerCase())
+    const { name, number, filter, contacts } = this.state;
+    const length = contacts.length;
+    const filteredUsers = contacts.filter(user =>
+      user.name.toLowerCase().includes(filter.toLowerCase())
     );
-    const length = this.state.contacts.length;
     return (
       <PhoneBookBox>
         <Form
-          onName={this.state.name}
-          onPhone={this.state.number}
+          onName={name}
+          onPhone={number}
           onHandleIncrement={this.handleIncrement}
           onHandleIncrementPhone={this.handleIncrementPhone}
         />
-
-        {/* <h1>
-          <span style={{ color: '#3a72a9' }}>p</span>honebook
-        </h1>
-        <form>
-          <label style={{ position: 'relative' }}>
-            <span>Name</span>
-            <input
-              type="text"
-              name="name"
-              pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-              title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-              required
-              value={this.state.name}
-              onChange={this.handleIncrement}
-            />
-          </label>
-          <label style={{ position: 'relative' }}>
-            <span>Phone</span>
-            <input
-              type="tel"
-              name="number"
-              pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-              title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-              required
-              value={this.state.number}
-              onChange={this.handleIncrementPhone}
-            />
-          </label>
-        </form> */}
         <AddButton onhandleNameAdd={this.handleNameAdd} />
-        <Filter
-          onFilter={this.state.filter}
-          onChangeFilter={this.changeFilter}
-        />
+        <Filter onFilter={filter} onChangeFilter={this.changeFilter} />
         <Contacts
           onFilteredUers={filteredUsers}
           onDeleteContact={this.deleteContact}
