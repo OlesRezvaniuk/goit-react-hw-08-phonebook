@@ -7,7 +7,6 @@ import {
   ContactItem,
   ContactTel,
   ContactBtn,
-  NotTitle,
 } from './Contacts.styled';
 
 export const Contacts = ({ onFilteredUers, onDeleteContact, onLength }) => {
