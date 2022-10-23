@@ -38,11 +38,11 @@ export class Phonebook extends Component {
     if (name === '') {
       Notify.failure('You didnt enter a name');
       return;
-    }
-    if (number === '') {
+    } else if (number === '') {
       Notify.failure('You didnt enter a number');
       return;
     }
+
     if (contacts.some(contact => contact.name === name)) {
       Notify.failure(`${name} is already in contacts`);
       return;
