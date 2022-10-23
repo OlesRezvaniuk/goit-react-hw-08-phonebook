@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 
 import {
   ContactsTitle,
+  ContactsNone,
   ContactsList,
   ContactName,
   ContactItem,
@@ -12,9 +13,12 @@ import {
 export const Contacts = ({ onFilteredUers, onDeleteContact, onLength }) => {
   return (
     <>
-      <ContactsTitle>
-        {onLength === 0 ? 'There is no contacts' : 'Contacts'}
-      </ContactsTitle>
+      {onLength === 0 ? (
+        <ContactsNone>There is no contacts</ContactsNone>
+      ) : (
+        <ContactsTitle>Contacts</ContactsTitle>
+      )}
+
       <ContactsList>
         {onFilteredUers.map(item => {
           return (

@@ -8,6 +8,14 @@ export const ContactsTitle = styled.h2`
   color: white;
   margin-bottom: 5px;
 `;
+export const ContactsNone = styled.h2`
+  font-size: 16px;
+  // text-transform: uppercase;
+  font-weight: 700;
+  margin-top: 20px;
+  color: white;
+  margin-bottom: 5px;
+`;
 
 export const ContactsList = styled.ul`
   list-style: none;
