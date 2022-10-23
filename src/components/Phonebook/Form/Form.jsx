@@ -52,7 +52,7 @@ export const Form = ({
 
 Form.propTypes = {
   onName: PropTypes.string.isRequired,
-  onPhone: PropTypes.number,
-  onHandleIncrement: PropTypes.func,
+  onPhone: PropTypes.string.isRequired,
+  onHandleIncrement: PropTypes.func.isRequired,
   onHandleDecrement: PropTypes.func,
 };

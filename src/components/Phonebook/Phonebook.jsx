@@ -81,10 +81,40 @@ export class Phonebook extends Component {
       <PhoneBookBox>
         <Form
           onName={this.state.name}
-          onPhone={this.state.phone}
+          onPhone={this.state.number}
           onHandleIncrement={this.handleIncrement}
           onHandleIncrementPhone={this.handleIncrementPhone}
         />
+
+        {/* <h1>
+          <span style={{ color: '#3a72a9' }}>p</span>honebook
+        </h1>
+        <form>
+          <label style={{ position: 'relative' }}>
+            <span>Name</span>
+            <input
+              type="text"
+              name="name"
+              pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+              title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+              required
+              value={this.state.name}
+              onChange={this.handleIncrement}
+            />
+          </label>
+          <label style={{ position: 'relative' }}>
+            <span>Phone</span>
+            <input
+              type="tel"
+              name="number"
+              pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+              title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+              required
+              value={this.state.number}
+              onChange={this.handleIncrementPhone}
+            />
+          </label>
+        </form> */}
         <AddButton onhandleNameAdd={this.handleNameAdd} />
         <Filter
           onFilter={this.state.filter}
