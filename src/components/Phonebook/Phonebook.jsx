@@ -58,6 +58,11 @@ export class Phonebook extends Component {
     this.setState(prevState => ({
       contacts: [...prevState.contacts, newName],
     }));
+    this.reset();
+  };
+
+  reset = () => {
+    this.setState({ name: '', number: '' });
   };
 
   deleteContact = id => {
@@ -76,8 +81,8 @@ export class Phonebook extends Component {
       <PhoneBookBox>
         <Form
           onName={this.state.name}
-          onHandleIncrement={this.handleIncrement}
           onPhone={this.state.phone}
+          onHandleIncrement={this.handleIncrement}
           onHandleIncrementPhone={this.handleIncrementPhone}
         />
         <AddButton onhandleNameAdd={this.handleNameAdd} />
