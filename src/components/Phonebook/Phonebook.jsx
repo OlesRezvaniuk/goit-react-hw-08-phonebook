@@ -8,6 +8,8 @@ import { Filter } from './Filter/Filter';
 import { Contacts } from './Contacts/Contacts';
 import { PhoneBookBox } from './Phonebook.styled';
 
+const SAVE_CONTACTS = 'contacts';
+
 export class Phonebook extends Component {
   state = {
     contacts: [],
@@ -15,6 +17,21 @@ export class Phonebook extends Component {
     name: '',
     number: '',
   };
+
+  componentDidMount() {
+    const getFromToLS = localStorage.getItem(SAVE_CONTACTS);
+    const parseLS = JSON.parse(getFromToLS);
+    if (parseLS) {
+      this.setState({ contacts: parseLS });
+    }
+  }
+
+  componentDidUpdate(_, prevState) {
+    const { contacts } = this.state;
+    if (prevState.contacts !== contacts) {
+      localStorage.setItem(SAVE_CONTACTS, JSON.stringify(contacts));
+    }
+  }
 
   handleIncrement = e => {
     this.setState({ name: e.currentTarget.value });

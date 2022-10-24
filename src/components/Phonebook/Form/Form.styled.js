@@ -8,7 +8,7 @@ export const FormTitle = styled.h1`
 export const FormForm = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 1px;
+  gap: 4px;
 `;
 
 export const FormLabel = styled.label`

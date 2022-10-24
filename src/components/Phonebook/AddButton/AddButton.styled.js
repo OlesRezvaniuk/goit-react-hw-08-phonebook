@@ -8,7 +8,7 @@ export const AddBtn = styled.button`
   height: 20px;
   position: absolute;
   right: 15px;
-  top: 116.2px;
+  top: 121px;
   padding: 0px 5px;
   background-color: white;
   display: flex;

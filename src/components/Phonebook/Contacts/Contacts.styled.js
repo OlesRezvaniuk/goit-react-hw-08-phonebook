@@ -34,7 +34,7 @@ export const ContactName = styled.h3`
 export const ContactItem = styled.li`
   display: flex;
   text-align: start;
-  padding: 2px;
+  padding: 4px;
   border-radius: 2px;
   &:nth-of-type(odd) {
     background-color: #ffffff21;
