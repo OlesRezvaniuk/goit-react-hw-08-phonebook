@@ -5,7 +5,7 @@ export const FormTitle = styled.h1`
   margin-bottom: 15px;
 `;
 
-export const FormForm = styled.form`
+export const FormEl = styled.form`
   display: flex;
   flex-direction: column;
   gap: 4px;

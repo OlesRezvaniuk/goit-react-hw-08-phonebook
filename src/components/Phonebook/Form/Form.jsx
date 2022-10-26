@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { AddButton } from '../AddButton/AddButton';
 import {
-  FormForm,
+  FormEl,
   FormTitle,
   FormLabel,
   FormElName,
@@ -12,9 +12,9 @@ import {
 
 export const Form = ({
   onName,
-  onHandleIncrementName,
+  onHandleName,
   onPhone,
-  onHandleIncrementNumber,
+  onHandleNumber,
   onHandleNameAdd,
 }) => {
   return (
@@ -22,7 +22,7 @@ export const Form = ({
       <FormTitle>
         <span style={{ color: '#3a72a9' }}>p</span>honebook
       </FormTitle>
-      <FormForm onSubmit={onHandleNameAdd}>
+      <FormEl onSubmit={onHandleNameAdd}>
         <FormLabel style={{ position: 'relative' }}>
           <FormElName>Name</FormElName>
           <FormInput
@@ -32,7 +32,7 @@ export const Form = ({
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             required
             value={onName}
-            onChange={onHandleIncrementName}
+            onChange={onHandleName}
           />
         </FormLabel>
         <FormLabel style={{ position: 'relative' }}>
@@ -44,11 +44,11 @@ export const Form = ({
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
             value={onPhone}
-            onChange={onHandleIncrementNumber}
+            onChange={onHandleNumber}
           />
         </FormLabel>
         <AddButton />
-      </FormForm>
+      </FormEl>
     </>
   );
 };
@@ -56,6 +56,6 @@ export const Form = ({
 Form.propTypes = {
   onName: PropTypes.string.isRequired,
   onPhone: PropTypes.string.isRequired,
-  onHandleIncrementName: PropTypes.func.isRequired,
-  onHandleIncrementNumber: PropTypes.func.isRequired,
+  onHandleName: PropTypes.func.isRequired,
+  onHandleNumber: PropTypes.func.isRequired,
 };

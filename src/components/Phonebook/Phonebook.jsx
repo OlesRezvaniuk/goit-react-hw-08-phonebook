@@ -1,5 +1,3 @@
-// import { clear } from '@testing-library/user-event/dist/clear';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { useEffect } from 'react';
 import shortid from 'shortid';
 import { Form } from './Form/Form';
@@ -27,15 +25,15 @@ export const Phonebook = () => {
     localStorage.setItem(SAVE_CONTACTS, JSON.stringify(contacts));
   }, [contacts]);
 
-  const handleIncrementName = e => {
+  const handleName = e => {
     setName(e.currentTarget.value);
     console.log(e);
   };
-  const handleIncrementNumber = e => {
+  const handleNumber = e => {
     setNumber(e.currentTarget.value);
     console.log(e);
   };
-  const handleIncrementFilter = e => {
+  const handleFilter = e => {
     setFilter(e.currentTarget.value);
   };
 
@@ -69,12 +67,12 @@ export const Phonebook = () => {
       <Form
         onName={name}
         onPhone={number}
-        onHandleIncrementName={handleIncrementName}
-        onHandleIncrementNumber={handleIncrementNumber}
+        onHandleName={handleName}
+        onHandleNumber={handleNumber}
         onHandleNameAdd={handleNameAdd}
       />
       {/* <AddButton /> */}
-      <Filter onFilter={filter} onChangeFilter={handleIncrementFilter} />
+      <Filter onFilter={filter} onChangeFilter={handleFilter} />
       <Contacts
         onFilteredUers={filteredUsers}
         onDeleteContact={deleteContact}
