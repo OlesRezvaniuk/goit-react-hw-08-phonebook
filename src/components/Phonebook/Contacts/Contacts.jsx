@@ -1,4 +1,7 @@
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
+import { removeContactAction } from 'redux/PhonebookSlice';
+import { useDispatch } from 'react-redux';
 
 import {
   ContactsTitle,
@@ -10,7 +13,12 @@ import {
   ContactBtn,
 } from './Contacts.styled';
 
-export const Contacts = ({ onFilteredUers, onDeleteContact, onLength }) => {
+export const Contacts = ({ onFilteredUers, onLength }) => {
+  const contactsArray = useSelector(state => state.contacts.array);
+  const dispatch = useDispatch();
+  const deleteContact = e => {
+    dispatch(removeContactAction(e.target.dataset.id));
+  };
   return (
     <>
       {onLength === 0 ? (
@@ -18,19 +26,14 @@ export const Contacts = ({ onFilteredUers, onDeleteContact, onLength }) => {
       ) : (
         <ContactsTitle>Contacts</ContactsTitle>
       )}
-
       <ContactsList>
-        {onFilteredUers.map(item => {
+        {contactsArray.map(({ id, name, number }) => {
           return (
-            <ContactItem key={item.id}>
+            <ContactItem key={id}>
               <ContactName>
-                {item.name} : <ContactTel>{item.number}</ContactTel>
+                {name} : <ContactTel>{number}</ContactTel>
               </ContactName>
-              <ContactBtn
-                key={item.id}
-                type="button"
-                onClick={() => onDeleteContact(item.id)}
-              >
+              <ContactBtn type="button" data-id={id} onClick={deleteContact}>
                 Delete
               </ContactBtn>
             </ContactItem>
@@ -39,9 +42,4 @@ export const Contacts = ({ onFilteredUers, onDeleteContact, onLength }) => {
       </ContactsList>
     </>
   );
-};
-
-Contacts.propTypes = {
-  onFilteredUsers: PropTypes.func,
-  onDeleteContact: PropTypes.func.isRequired,
 };

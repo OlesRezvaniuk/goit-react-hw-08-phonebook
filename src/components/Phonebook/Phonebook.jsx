@@ -5,10 +5,21 @@ import { Filter } from './Filter/Filter';
 import { Contacts } from './Contacts/Contacts';
 import { PhoneBookBox } from './Phonebook.styled';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
+
+import {
+  addContactAction,
+  filterContactAction,
+  removeContactAction,
+} from 'redux/PhonebookSlice';
+import { useDispatch } from 'react-redux';
 
 const SAVE_CONTACTS = 'contacts';
 
 export const Phonebook = () => {
+  const dispatch = useDispatch();
+
+  //slice
   const [contacts, setContacts] = useState(() => {
     const getFromToLS = localStorage.getItem(SAVE_CONTACTS);
     const parseLS = JSON.parse(getFromToLS);
@@ -17,9 +28,9 @@ export const Phonebook = () => {
     }
     return [];
   });
-  const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
-  const [filter, setFilter] = useState('');
+  const [name, setName] = useState(''); //local
+  const [number, setNumber] = useState(''); //local
+  const [filter, setFilter] = useState(''); //slice
 
   useEffect(() => {
     localStorage.setItem(SAVE_CONTACTS, JSON.stringify(contacts));
@@ -27,14 +38,12 @@ export const Phonebook = () => {
 
   const handleName = e => {
     setName(e.currentTarget.value);
-    console.log(e);
   };
   const handleNumber = e => {
     setNumber(e.currentTarget.value);
-    console.log(e);
   };
   const handleFilter = e => {
-    setFilter(e.currentTarget.value);
+    dispatch(filterContactAction(e.currentTarget.value));
   };
 
   const handleNameAdd = e => {
@@ -44,7 +53,7 @@ export const Phonebook = () => {
       number,
       id: shortid(),
     };
-    setContacts([...contacts, newName]);
+    dispatch(addContactAction(newName));
     reset();
   };
 
@@ -53,10 +62,10 @@ export const Phonebook = () => {
     setNumber('');
   };
 
-  const deleteContact = id => {
-    const newContacts = contacts.filter(contact => contact.id !== id);
-    setContacts(newContacts);
-  };
+  // const deleteContact = id => {
+  //   const newContacts = contacts.filter(contact => contact.id !== id);
+  //   setContacts(newContacts);
+  // };
 
   const length = contacts.length;
   const filteredUsers = contacts.filter(user =>
@@ -75,7 +84,7 @@ export const Phonebook = () => {
       <Filter onFilter={filter} onChangeFilter={handleFilter} />
       <Contacts
         onFilteredUers={filteredUsers}
-        onDeleteContact={deleteContact}
+        // onDeleteContact={deleteContact}
         onLength={length}
       />
     </PhoneBookBox>

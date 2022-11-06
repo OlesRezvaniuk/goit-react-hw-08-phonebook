@@ -1,7 +1,10 @@
 import css from './Filter.module.css';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 
-export const Filter = ({ onFilter, onChangeFilter }) => {
+export const Filter = ({ onChangeFilter }) => {
+  const contactsFilter = useSelector(state => state.contacts.filter);
+  console.log(contactsFilter);
   return (
     <>
       <br />
@@ -10,7 +13,7 @@ export const Filter = ({ onFilter, onChangeFilter }) => {
         <input
           className={css.filter__input}
           type="text"
-          value={onFilter}
+          value={contactsFilter}
           onChange={onChangeFilter}
         />
       </label>
