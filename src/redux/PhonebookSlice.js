@@ -12,13 +12,12 @@ export const contactsSlice = createSlice({
   initialState: contactsInitialState,
   reducers: {
     addContactAction(state, action) {
-      state.array.push(action.payload);
+      state.array.find(contact => contact.name !== action.payload)
+        ? alert(`${action.payload} is already in contacts`)
+        : state.array.push(action.payload);
     },
     filterContactAction(state, action) {
       state.filter = action.payload;
-      // state.array = state.array.filter(contact =>
-      //   contact.name.toLowerCase().includes(state.filter.toLowerCase())
-      // );
     },
     removeContactAction(state, action) {
       state.array = state.array.filter(
