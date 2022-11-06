@@ -1,8 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { contactsSlice } from './PhonebookSlice';
+import { persistStore } from 'redux-persist';
+import { persistedContacts } from './PhonebookSlice';
+import thunk from 'redux-thunk';
 
 export const store = configureStore({
   reducer: {
-    contacts: contactsSlice.reducer,
+    contacts: persistedContacts,
   },
+  middleware: [thunk],
 });
+
+export const persistor = persistStore(store);

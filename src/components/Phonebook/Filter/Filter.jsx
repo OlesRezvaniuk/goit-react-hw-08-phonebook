@@ -1,10 +1,15 @@
 import css from './Filter.module.css';
-import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { filterContactAction } from 'redux/PhonebookSlice';
 
-export const Filter = ({ onChangeFilter }) => {
+export const Filter = () => {
+  const dispatch = useDispatch();
+
   const contactsFilter = useSelector(state => state.contacts.filter);
-  console.log(contactsFilter);
+
+  const handleFilter = e => {
+    dispatch(filterContactAction(e.currentTarget.value));
+  };
   return (
     <>
       <br />
@@ -14,14 +19,9 @@ export const Filter = ({ onChangeFilter }) => {
           className={css.filter__input}
           type="text"
           value={contactsFilter}
-          onChange={onChangeFilter}
+          onChange={handleFilter}
         />
       </label>
     </>
   );
-};
-
-Filter.propTypes = {
-  onFilter: PropTypes.string.isRequired,
-  onChangeFilter: PropTypes.func.isRequired,
 };
