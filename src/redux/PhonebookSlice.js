@@ -35,6 +35,7 @@ export const contactListReducer = contactsSlice.reducer;
 const persistConfig = {
   key: 'CONTACTS',
   storage,
+  whitelist: ['array'],
 };
 
 export const persistedContacts = persistReducer(
