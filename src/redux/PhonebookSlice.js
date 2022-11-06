@@ -16,9 +16,9 @@ export const contactsSlice = createSlice({
     },
     filterContactAction(state, action) {
       state.filter = action.payload;
-      state.array = state.array.filter(contact =>
-        contact.name.toLowerCase().includes(state.filter.toLowerCase())
-      );
+      // state.array = state.array.filter(contact =>
+      //   contact.name.toLowerCase().includes(state.filter.toLowerCase())
+      // );
     },
     removeContactAction(state, action) {
       state.array = state.array.filter(

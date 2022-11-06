@@ -15,11 +15,17 @@ import {
 
 export const Contacts = () => {
   const contactsArray = useSelector(state => state.contacts.array);
+  const contactsFilter = useSelector(state => state.contacts.filter);
+  console.log(contactsFilter);
   const dispatch = useDispatch();
   const deleteContact = e => {
     dispatch(removeContactAction(e.target.dataset.id));
   };
   const length = contactsArray.length;
+
+  const filteredUsers = contactsArray.filter(user =>
+    user.name.toLowerCase().includes(contactsFilter.toLowerCase())
+  );
   return (
     <>
       {length === 0 ? (
@@ -28,7 +34,7 @@ export const Contacts = () => {
         <ContactsTitle>Contacts</ContactsTitle>
       )}
       <ContactsList>
-        {contactsArray.map(({ id, name, number }) => {
+        {filteredUsers.map(({ id, name, number }) => {
           return (
             <ContactItem key={id}>
               <ContactName>
