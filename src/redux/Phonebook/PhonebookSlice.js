@@ -5,11 +5,11 @@ import {
   setContactsData,
 } from './contactsOperations.js';
 
-const status = {
-  init: 'init',
-  loading: 'loading',
-  success: 'succes',
-  error: 'error',
+const Status = {
+  init: 'INIT',
+  loading: 'LOADING',
+  success: 'SUCCESS',
+  error: 'ERROR',
 };
 
 const initialState = {
@@ -23,20 +23,20 @@ export const phonebookSlice = createSlice({
   initialState,
   extraReducers: {
     [getContactsData.pending](state) {
-      state.status = status.loading;
+      state.status = Status.loading;
     },
 
     [getContactsData.fulfilled](state, action) {
-      state.status = status.success;
+      state.status = Status.success;
       state.items = [...action.payload];
     },
 
     [getContactsData.rejected](state) {
-      state.status = status.error;
+      state.status = Status.error;
     },
 
     [setContactsData.pending](state) {
-      state.status = status.loading;
+      state.status = Status.loading;
     },
 
     [setContactsData.fulfilled](state, action) {
@@ -44,10 +44,10 @@ export const phonebookSlice = createSlice({
     },
 
     [setContactsData.rejected](state) {
-      state.status = status.error;
+      state.status = Status.error;
     },
     [deleteContactsData.pending](state) {
-      state.status = status.loading;
+      state.status = Status.loading;
     },
     [deleteContactsData.fulfilled](state, action) {
       state.items = state.items.filter(
@@ -55,7 +55,7 @@ export const phonebookSlice = createSlice({
       );
     },
     [deleteContactsData.rejected](state) {
-      state.status = status.error;
+      state.status = Status.error;
     },
   },
 });
