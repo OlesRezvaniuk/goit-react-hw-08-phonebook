@@ -8,8 +8,7 @@ export const getContacts = async () => {
 };
 export const addContact = async contact => {
   const { data } = await axios.post(
-    `https://6367f6ead1d09a8fa61e62e4.mockapi.io/contacts`,
-    contact
+    `https://6367f6ead1d09a8fa61e62e4.mockapi.io/contacts`
   );
   return data;
 };
