@@ -5,17 +5,17 @@ import {
   setContactsData,
 } from './contactsOperations.js';
 
-const Status = {
-  init: 'INIT',
-  loading: 'LOADING',
-  success: 'SUCCESS',
-  error: 'ERROR',
-};
-
 const initialState = {
   items: [],
   isLoading: false,
   error: null,
+};
+
+const status = {
+  init: 'init',
+  loading: 'loading',
+  success: 'success',
+  error: 'error',
 };
 
 export const phonebookSlice = createSlice({
@@ -23,20 +23,20 @@ export const phonebookSlice = createSlice({
   initialState,
   extraReducers: {
     [getContactsData.pending](state) {
-      state.status = Status.loading;
+      state.status = status.loading;
     },
 
     [getContactsData.fulfilled](state, action) {
-      state.status = Status.success;
+      state.status = status.success;
       state.items = [...action.payload];
     },
 
     [getContactsData.rejected](state) {
-      state.status = Status.error;
+      state.status = status.error;
     },
 
     [setContactsData.pending](state) {
-      state.status = Status.loading;
+      state.status = status.loading;
     },
 
     [setContactsData.fulfilled](state, action) {
@@ -44,10 +44,10 @@ export const phonebookSlice = createSlice({
     },
 
     [setContactsData.rejected](state) {
-      state.status = Status.error;
+      state.status = status.error;
     },
     [deleteContactsData.pending](state) {
-      state.status = Status.loading;
+      state.status = status.loading;
     },
     [deleteContactsData.fulfilled](state, action) {
       state.items = state.items.filter(
@@ -55,7 +55,7 @@ export const phonebookSlice = createSlice({
       );
     },
     [deleteContactsData.rejected](state) {
-      state.status = Status.error;
+      state.status = status.error;
     },
   },
 });
