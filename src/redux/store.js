@@ -1,13 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { persistStore } from 'redux-persist';
-import { persistedContacts } from './PhonebookSlice';
-import thunk from 'redux-thunk';
-
+import { rootReducer } from './rootReducer';
 export const store = configureStore({
-  reducer: {
-    contacts: persistedContacts,
-  },
-  middleware: [thunk],
+  reducer: rootReducer,
+  devTools: true,
 });
-
-export const persistor = persistStore(store);
