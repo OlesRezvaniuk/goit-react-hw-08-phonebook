@@ -3,7 +3,7 @@ import {
   deleteContactsData,
   getContactsData,
   setContactsData,
-} from './operations';
+} from './contactsOperations.js';
 const Status = {
   init: 'INIT',
   loading: 'LOADING',

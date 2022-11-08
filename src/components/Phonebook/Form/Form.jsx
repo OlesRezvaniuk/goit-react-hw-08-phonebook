@@ -1,7 +1,7 @@
+import shortid from 'shortid';
 import React from 'react';
 import { useState } from 'react';
-import shortid from 'shortid';
-import { addContactAction } from 'redux/PhonebookSlice';
+import { setContactsData } from 'redux/Phonebook/contactsOperations';
 import { useDispatch } from 'react-redux';
 import { AddButton } from '../AddButton/AddButton';
 import {
@@ -31,7 +31,7 @@ export const Form = () => {
       number,
       id: shortid(),
     };
-    dispatch(addContactAction(newName));
+    dispatch(setContactsData(newName));
     reset();
   };
 

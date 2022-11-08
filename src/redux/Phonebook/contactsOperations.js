@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { addContact, deleteContact, getContacts } from '../../helpers/API';
+import { addContact, deleteContact, getContacts } from '../mockapiApi';
 
 export const getContactsData = createAsyncThunk(
   'phonebook/fetchAll',

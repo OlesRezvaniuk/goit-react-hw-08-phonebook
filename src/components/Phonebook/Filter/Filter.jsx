@@ -1,14 +1,15 @@
 import css from './Filter.module.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { filterContactAction } from 'redux/PhonebookSlice';
+import { changeFilterAction } from 'redux/Phonebook/filterSlice';
+import { getFilter } from 'redux/Phonebook/Selector';
 
 export const Filter = () => {
   const dispatch = useDispatch();
 
-  const contactsFilter = useSelector(state => state.contacts.filter);
+  const filter = useSelector(getFilter);
 
   const handleFilter = e => {
-    dispatch(filterContactAction(e.currentTarget.value));
+    dispatch(changeFilterAction(e.currentTarget.value));
   };
   return (
     <>
@@ -18,7 +19,7 @@ export const Filter = () => {
         <input
           className={css.filter__input}
           type="text"
-          value={contactsFilter}
+          value={filter}
           onChange={handleFilter}
         />
       </label>

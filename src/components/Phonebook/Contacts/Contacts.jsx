@@ -1,7 +1,8 @@
 // import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
-import { removeContactAction } from 'redux/PhonebookSlice';
+import { deleteContactsData } from 'redux/Phonebook/contactsOperations';
 import { useDispatch } from 'react-redux';
+import { getFilteredContacts } from 'redux/Phonebook/Selector';
 
 import {
   ContactsTitle,
@@ -14,18 +15,13 @@ import {
 } from './Contacts.styled';
 
 export const Contacts = () => {
-  const contactsArray = useSelector(state => state.contacts.array);
-  const contactsFilter = useSelector(state => state.contacts.filter);
-  console.log(contactsFilter);
+  const contacts = useSelector(getFilteredContacts);
   const dispatch = useDispatch();
-  const deleteContact = e => {
-    dispatch(removeContactAction(e.target.dataset.id));
+  const handleDeleteUser = id => {
+    dispatch(deleteContactsData(id));
   };
-  const length = contactsArray.length;
+  const length = contacts.length;
 
-  const filteredUsers = contactsArray.filter(user =>
-    user.name.toLowerCase().includes(contactsFilter.toLowerCase())
-  );
   return (
     <>
       {length === 0 ? (
@@ -34,13 +30,17 @@ export const Contacts = () => {
         <ContactsTitle>Contacts</ContactsTitle>
       )}
       <ContactsList>
-        {filteredUsers.map(({ id, name, number }) => {
+        {contacts.map(({ id, name, number }) => {
           return (
             <ContactItem key={id}>
               <ContactName>
                 {name} : <ContactTel>{number}</ContactTel>
               </ContactName>
-              <ContactBtn type="button" data-id={id} onClick={deleteContact}>
+              <ContactBtn
+                type="button"
+                data-id={id}
+                onClick={() => handleDeleteUser(id)}
+              >
                 Delete
               </ContactBtn>
             </ContactItem>
