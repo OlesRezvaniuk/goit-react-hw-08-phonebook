@@ -1,8 +1,6 @@
-// import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { deleteContactsData } from 'redux/Phonebook/contactsOperations';
-import { useDispatch } from 'react-redux';
-import { getFilteredContacts } from 'redux/Phonebook/Selector';
+import { selectorFilteredContacts } from 'redux/Phonebook/Selector';
 
 import {
   ContactsTitle,
@@ -15,13 +13,12 @@ import {
 } from './Contacts.styled';
 
 export const Contacts = () => {
-  const contacts = useSelector(getFilteredContacts);
   const dispatch = useDispatch();
+  const contacts = useSelector(selectorFilteredContacts);
   const handleDeleteUser = id => {
     dispatch(deleteContactsData(id));
   };
   const length = contacts.length;
-
   return (
     <>
       {length === 0 ? (
