@@ -1,21 +1,42 @@
 export const RegisterPage = () => {
   return (
     <>
-      <h1>RegisterPage</h1>
+      <h1>Create your account</h1>
       <form>
         <label>
-          name
-          <input />
+          <span>Name</span>
+          <input
+            type="name"
+            name="name"
+            placeholder="Your name"
+            aria-label="Input for your name"
+            // required=""
+            // value=""
+          />
         </label>
         <br />
         <label>
-          mail
-          <input />
+          <span>Email</span>
+          <input
+            type="email"
+            name="email"
+            placeholder="Your e-mail"
+            aria-label="Input for your email"
+            // required=""
+            // value=""
+          />
         </label>
         <br />
         <label>
-          password
-          <input />
+          <span>Password</span>
+          <input
+            type="password"
+            name="password"
+            placeholder="Should be at least 7 characters"
+            aria-label="Input for your password"
+            // required=""
+            // value=""
+          />
         </label>
         <br />
         <button>Sing Up</button>
