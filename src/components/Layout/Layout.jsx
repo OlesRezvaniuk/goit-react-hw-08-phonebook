@@ -4,12 +4,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import authOperations from 'redux/RepetaApi';
 
 export const Layout = () => {
+  const dispatch = useDispatch();
   const isLoggin = useSelector(state => state.auth.isLoggedIn);
   const userName = useSelector(state => state.auth.user.name);
-  console.log(userName);
-  const dispatch = useDispatch();
+  // const userToken = useSelector(state => state.auth.token);
 
-  console.log(isLoggin);
   const handleLogOutButton = () => {
     dispatch(authOperations.register({ name: '', email: '', password: '' }));
   };
