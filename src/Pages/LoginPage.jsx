@@ -17,7 +17,7 @@ export const LoginPage = () => {
         </label>
 
         <br />
-        <label class="LoginForm_label__fufSi">
+        <label>
           <span>Password</span>
           <input
             type="password"
