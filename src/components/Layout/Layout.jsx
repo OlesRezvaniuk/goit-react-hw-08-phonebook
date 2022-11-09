@@ -5,6 +5,8 @@ import authOperations from 'redux/RepetaApi';
 
 export const Layout = () => {
   const isLoggin = useSelector(state => state.auth.isLoggedIn);
+  const userName = useSelector(state => state.auth.user.name);
+  console.log(userName);
   const dispatch = useDispatch();
 
   console.log(isLoggin);
@@ -13,12 +15,12 @@ export const Layout = () => {
   };
   return (
     <>
-      <header>
+      <header style={{ display: 'flex' }}>
         <Link to="/">phonebook</Link>
         {isLoggin || (
           <>
-            Sing Up
             <Link to="/login">
+              Sing Up
               <img
                 width="20px"
                 alt="logOut-icon"
@@ -30,14 +32,16 @@ export const Layout = () => {
         )}
 
         {isLoggin && (
-          <button onClick={handleLogOutButton}>
-            Log Out
-            <img
-              width="20px"
-              alt="logOut-icon"
-              src="	https://vershinaguamka.ru/imgs/rools/271-2715393_logout.png"
-            ></img>
-          </button>
+          <div style={{ display: 'flex' }}>
+            <p>{`Wellcome, ${userName}`}</p>
+            <button onClick={handleLogOutButton}>
+              <img
+                width="20px"
+                alt="logOut-icon"
+                src="	https://vershinaguamka.ru/imgs/rools/271-2715393_logout.png"
+              ></img>
+            </button>
+          </div>
         )}
       </header>
       <Outlet />
