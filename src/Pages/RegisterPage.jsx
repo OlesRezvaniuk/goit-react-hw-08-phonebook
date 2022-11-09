@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import authOperations from 'redux/RepetaApi';
-import { useSelector } from 'react-redux';
 
 export const RegisterPage = () => {
   const dispatch = useDispatch();

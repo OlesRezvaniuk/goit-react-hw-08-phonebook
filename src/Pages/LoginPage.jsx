@@ -1,9 +1,29 @@
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import authOperations from 'redux/RepetaApi';
+
 export const LoginPage = () => {
+  const dispatch = useDispatch();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleEmailLogin = e => {
+    setEmail(e.currentTarget.value);
+  };
+  const handlePasswordLogin = e => {
+    setPassword(e.currentTarget.value);
+  };
+  const handleLoginSubmit = e => {
+    e.preventDefault();
+    dispatch(authOperations.login({ email, password }));
+    setEmail('');
+    setPassword('');
+  };
   return (
     <>
       <h1>Log in to Phonebook</h1>
 
-      <form>
+      <form onSubmit={handleLoginSubmit}>
         <label>
           <span>Email</span>
           <input
@@ -11,8 +31,8 @@ export const LoginPage = () => {
             name="email"
             placeholder="Your e-mail"
             aria-label="Input for your email"
-            // required=""
-            // value=""
+            onChange={handleEmailLogin}
+            value={email}
           />
         </label>
 
@@ -24,8 +44,8 @@ export const LoginPage = () => {
             name="password"
             placeholder="Your password"
             aria-label="Input for your password"
-            // required=""
-            // value=""
+            onChange={handlePasswordLogin}
+            value={password}
           />
         </label>
         <br />

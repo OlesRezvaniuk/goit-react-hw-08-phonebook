@@ -10,7 +10,7 @@ export const Layout = () => {
   // const userToken = useSelector(state => state.auth.token);
 
   const handleLogOutButton = () => {
-    dispatch(authOperations.register({ name: '', email: '', password: '' }));
+    dispatch(authOperations.logout());
   };
   return (
     <>
@@ -19,7 +19,7 @@ export const Layout = () => {
         {isLoggin || (
           <>
             <Link to="/login">
-              Sing Up
+              Sing In
               <img
                 width="20px"
                 alt="logOut-icon"
