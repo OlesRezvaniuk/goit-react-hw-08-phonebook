@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { authOperations } from '../redux/RepetaApi';
+import authOperations from 'redux/RepetaApi';
+import { useSelector } from 'react-redux';
 
 export const RegisterPage = () => {
   const dispatch = useDispatch();
@@ -19,16 +20,17 @@ export const RegisterPage = () => {
   };
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(authOperations.register(name, email, password));
+    dispatch(authOperations.register({ name, email, password }));
     setName('');
     setEmail('');
     setPassword('');
   };
+
   return (
     <>
       <h1>Create your account</h1>
-      <form onSubmit={' '}>
-        <label>
+      <form onSubmit={handleSubmit}>
+        <label name="name" type="name">
           <span>Name</span>
           <input
             placeholder="Your name"
@@ -41,8 +43,11 @@ export const RegisterPage = () => {
         <label>
           <span>Email</span>
           <input
+            name="email"
+            variant="standard"
             placeholder="Your e-mail"
             aria-label="Input for your email"
+            type="email"
             value={email}
             onChange={handleEmailChange}
           />
@@ -51,8 +56,11 @@ export const RegisterPage = () => {
         <label>
           <span>Password</span>
           <input
+            name="password"
             placeholder="Should be at least 7 characters"
             aria-label="Input for your password"
+            type="password"
+            variant="standard"
             value={password}
             onChange={handlePasswordChange}
           />
