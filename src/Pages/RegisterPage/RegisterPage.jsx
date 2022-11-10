@@ -3,6 +3,15 @@ import { useDispatch } from 'react-redux';
 import authOperations from 'redux/RepetaApi';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import {
+  Container,
+  Title,
+  FormEl,
+  FormLabel,
+  FormElName,
+  FormInput,
+  RemoveBtn,
+} from './RegisterPage.styled';
 
 export const RegisterPage = () => {
   const dispatch = useDispatch();
@@ -35,23 +44,21 @@ export const RegisterPage = () => {
           You are already sing up, <Link to="/contacts">to Contacts</Link>
         </p>
       ) : (
-        <>
-          {' '}
-          <h1>Create your account</h1>
-          <form onSubmit={handleSubmit}>
-            <label name="name" type="name">
-              <span>Name</span>
-              <input
+        <Container>
+          <Title>Create your account</Title>
+          <FormEl onSubmit={handleSubmit}>
+            <FormLabel name="name" type="name">
+              <FormElName>Name</FormElName>
+              <FormInput
                 placeholder="Your name"
                 aria-label="Input for your name"
                 onChange={handleNameChange}
                 value={name}
               />
-            </label>
-            <br />
-            <label>
-              <span>Email</span>
-              <input
+            </FormLabel>
+            <FormLabel>
+              <FormElName>Email</FormElName>
+              <FormInput
                 name="email"
                 variant="standard"
                 placeholder="Your e-mail"
@@ -60,11 +67,10 @@ export const RegisterPage = () => {
                 value={email}
                 onChange={handleEmailChange}
               />
-            </label>
-            <br />
-            <label>
-              <span>Password</span>
-              <input
+            </FormLabel>
+            <FormLabel>
+              <FormElName>Password</FormElName>
+              <FormInput
                 name="password"
                 placeholder="Should be at least 7 characters"
                 aria-label="Input for your password"
@@ -73,11 +79,10 @@ export const RegisterPage = () => {
                 value={password}
                 onChange={handlePasswordChange}
               />
-            </label>
-            <br />
-            <button>Sing Up</button>
-          </form>
-        </>
+            </FormLabel>
+            <RemoveBtn>Sing Up</RemoveBtn>
+          </FormEl>
+        </Container>
       )}
     </>
   );

@@ -11,22 +11,22 @@
   background: white;
   width: 100%;
   padding: 4px;
-  box-shadow: inset 0px 0px 0px #81a9d0;
+  box-shadow: inset 0px 0px 2px #81a9d0;
   border-radius: 2px;
   transition: 250ms;
 }
 
 .filter__label:hover {
-  box-shadow: inset 0px 0px 4px 0px #81a9d0;
+  box-shadow: inset 0px 0px 4px #81a9d0;
 }
 
 .filter__text {
   position: absolute;
-  left: 1px;
+  left: 0px;
   display: flex;
-  height: 20.5px;
+  height: 23.5px;
   align-items: center;
-  top: 1px;
+  top: 0px;
   background-color: #81a9d0;
   width: 50px;
   justify-content: center;

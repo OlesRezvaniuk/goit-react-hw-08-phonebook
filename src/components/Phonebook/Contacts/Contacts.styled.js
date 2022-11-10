@@ -26,7 +26,7 @@ export const ContactsList = styled.ul`
 `;
 
 export const ContactName = styled.h3`
-  color: white;
+  color: #4a4a4a;
   font-size: 14px;
   margin-left: 15px;
 `;
@@ -37,12 +37,12 @@ export const ContactItem = styled.li`
   padding: 4px;
   border-radius: 2px;
   &:nth-of-type(odd) {
-    background-color: #ffffff21;
+    background-color: #81a9d038;
   }
 `;
 
 export const ContactTel = styled.span`
-  color: white;
+  color: #4a4a4a;
   font-size: 12px;
   font-weight: 700;
   margin: auto;
@@ -54,7 +54,7 @@ export const ContactBtn = styled.button`
     border: none;
   border-radius: 2px;
   background-color: white;
-  box-shadow: inset 0px 0px 0px 0px #81a9d0;
+  box-shadow: inset 0px 0px 2px 0px #81a9d0;
   height: 16.5px;;
   padding: 0px 5px;
   background-color: white;

@@ -1,8 +1,18 @@
-import { Link } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import authOperations from 'redux/RepetaApi';
-import { Header, HeaderContainer, Logo, LinkStyled } from './Layout.styled';
+import {
+  Header,
+  HeaderContainer,
+  Logo,
+  LinkStyled,
+  LinkBox,
+  PageLinks,
+  LeaveBtn,
+  LinkContacts,
+  LoginName,
+  BtnIcon,
+} from './Layout.styled';
 
 export const Layout = () => {
   const dispatch = useDispatch();
@@ -20,29 +30,23 @@ export const Layout = () => {
             <Logo>P</Logo>
           </LinkStyled>
 
-          {token && <Link to="/contacts">Contacts</Link>}
+          {token && <LinkContacts to="/contacts">Contacts</LinkContacts>}
           {token === null ? (
-            <>
-              <Link to="/login">
+            <LinkBox>
+              <PageLinks style={{ border: 'none' }} to="/login">
                 Sing In
-                <img
-                  width="20px"
-                  alt="logOut-icon"
-                  src="	https://vershinaguamka.ru/imgs/rools/271-2715393_login.png"
-                ></img>
-              </Link>
-              <Link to="/register">Sing Up</Link>
-            </>
+              </PageLinks>
+              <PageLinks to="/register">Sing Up</PageLinks>
+            </LinkBox>
           ) : (
-            <div style={{ display: 'flex' }}>
-              <p>{`Wellcome, ${userName}`}</p>
-              <button onClick={handleLogOutButton}>
-                <img
-                  width="20px"
+            <div style={{ display: 'flex', marginLeft: 'auto' }}>
+              <LoginName>{userName}</LoginName>
+              <LeaveBtn onClick={handleLogOutButton}>
+                <BtnIcon
                   alt="logOut-icon"
                   src="	https://vershinaguamka.ru/imgs/rools/271-2715393_logout.png"
-                ></img>
-              </button>
+                ></BtnIcon>
+              </LeaveBtn>
             </div>
           )}
         </HeaderContainer>
