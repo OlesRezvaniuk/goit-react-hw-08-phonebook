@@ -7,7 +7,6 @@ export const PublicRoute = ({ children }) => {
   if (isLoggin) {
     return <Navigate to="/contacts" />;
   }
-  //   return <Outlet />;
   return children;
 };
 export const PrivateRoute = ({ children }) => {
@@ -16,6 +15,5 @@ export const PrivateRoute = ({ children }) => {
   if (!isLoggin) {
     return <Navigate to="/" />;
   }
-  //   return <Outlet />;
   return children;
 };

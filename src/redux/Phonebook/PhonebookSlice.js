@@ -3,7 +3,8 @@ import {
   deleteContactsData,
   getContactsData,
   setContactsData,
-} from '../Auth/Api/Api';
+  updateContactData,
+} from './contactsOperations';
 
 const initialState = {
   items: [],
@@ -56,6 +57,21 @@ export const phonebookSlice = createSlice({
     },
     [deleteContactsData.rejected](state) {
       state.status = status.error;
+    },
+    [updateContactData.pending]: (state, action) => {
+      state.isLoading = true;
+      state.error = null;
+    },
+    [updateContactData.fulfilled]: (state, action) => {
+      let changed = state.items.find(
+        contact => contact.id === action.payload.id
+      );
+      changed.name = action.payload.name;
+      changed.number = action.payload.number;
+    },
+    [updateContactData.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
     },
   },
 });
