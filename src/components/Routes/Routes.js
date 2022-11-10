@@ -2,7 +2,6 @@ import { Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 export const PublicRoute = ({ children }) => {
-  const isLoggin = useSelector(state => state.auth.isLoggedIn);
   const token = useSelector(state => state.auth.token);
 
   if (token !== null) {
