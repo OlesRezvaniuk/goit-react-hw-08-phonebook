@@ -8,6 +8,7 @@ export const Layout = () => {
   const isLoggin = useSelector(state => state.auth.isLoggedIn);
   const userName = useSelector(state => state.auth.user.name);
   // const userToken = useSelector(state => state.auth.token);
+  console.log(isLoggin);
 
   const handleLogOutButton = () => {
     dispatch(authOperations.logout());
@@ -15,13 +16,10 @@ export const Layout = () => {
   return (
     <>
       <header style={{ display: 'flex' }}>
-        {isLoggin === true ? (
-          <Link to="/contacts">phonebook</Link>
-        ) : (
-          <Link to="/">phonebook</Link>
-        )}
+        <Link to="/">phonebook</Link>
 
-        {isLoggin || (
+        {isLoggin && <Link to="/contacts">Contacts</Link>}
+        {isLoggin === null || (
           <>
             <Link to="/login">
               Sing In
@@ -35,7 +33,7 @@ export const Layout = () => {
           </>
         )}
 
-        {isLoggin && (
+        {isLoggin === null && (
           <div style={{ display: 'flex' }}>
             <p>{`Wellcome, ${userName}`}</p>
             <button onClick={handleLogOutButton}>

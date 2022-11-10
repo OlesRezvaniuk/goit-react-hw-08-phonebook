@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 export const HomePage = () => {
-  const dispatch = useDispatch();
   const isLoggin = useSelector(state => state.auth.isLoggedIn);
   const userName = useSelector(state => state.auth.user.name);
+  console.log(isLoggin);
   return (
     <section style={{ textAlign: 'center' }}>
       <h1>Phonebook</h1>
@@ -14,7 +14,7 @@ export const HomePage = () => {
         src="https://thumbs.gfycat.com/MatureGiganticAlbertosaurus-size_restricted.gif"
       ></img>
       <p>Fast, Secure and Mobile Friendly React Application</p>
-      {isLoggin === true ? (
+      {isLoggin !== null ? (
         <>
           <p>{userName} You are logined</p>
           <Link to="/contacts">
