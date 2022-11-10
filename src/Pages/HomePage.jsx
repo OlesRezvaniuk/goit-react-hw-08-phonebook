@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 export const HomePage = () => {
   const token = useSelector(state => state.auth.token);
   const userName = useSelector(state => state.auth.user.name);
-  console.log(token);
   return (
     <section style={{ textAlign: 'center' }}>
       <h1>Phonebook</h1>
