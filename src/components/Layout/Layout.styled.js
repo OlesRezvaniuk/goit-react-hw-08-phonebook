@@ -42,5 +42,6 @@ export const Logo = styled.p`
     align-items: center;
     border-radius: 50%;
     z-index: -1;
+    background-image: linear-gradient(#a7c4ff, #2660d9);
   }
 `;
