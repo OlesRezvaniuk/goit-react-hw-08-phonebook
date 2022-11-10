@@ -1,6 +1,7 @@
 import { token } from 'redux/RepetaApi';
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const instance = axios.create({
   baseURL: 'https://connections-api.herokuapp.com',
