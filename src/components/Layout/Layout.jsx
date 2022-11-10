@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import authOperations from 'redux/RepetaApi';
-import { Header } from './Layout.styled';
+import { Header, HeaderContainer, Logo, LinkStyled } from './Layout.styled';
 
 export const Layout = () => {
   const dispatch = useDispatch();
@@ -15,33 +15,37 @@ export const Layout = () => {
   return (
     <>
       <Header style={{ display: 'flex' }}>
-        <Link to="/">phonebook</Link>
+        <HeaderContainer>
+          <LinkStyled to="/">
+            <Logo>P</Logo>
+          </LinkStyled>
 
-        {token && <Link to="/contacts">Contacts</Link>}
-        {token === null ? (
-          <>
-            <Link to="/login">
-              Sing In
-              <img
-                width="20px"
-                alt="logOut-icon"
-                src="	https://vershinaguamka.ru/imgs/rools/271-2715393_login.png"
-              ></img>
-            </Link>
-            <Link to="/register">Sing Up</Link>
-          </>
-        ) : (
-          <div style={{ display: 'flex' }}>
-            <p>{`Wellcome, ${userName}`}</p>
-            <button onClick={handleLogOutButton}>
-              <img
-                width="20px"
-                alt="logOut-icon"
-                src="	https://vershinaguamka.ru/imgs/rools/271-2715393_logout.png"
-              ></img>
-            </button>
-          </div>
-        )}
+          {token && <Link to="/contacts">Contacts</Link>}
+          {token === null ? (
+            <>
+              <Link to="/login">
+                Sing In
+                <img
+                  width="20px"
+                  alt="logOut-icon"
+                  src="	https://vershinaguamka.ru/imgs/rools/271-2715393_login.png"
+                ></img>
+              </Link>
+              <Link to="/register">Sing Up</Link>
+            </>
+          ) : (
+            <div style={{ display: 'flex' }}>
+              <p>{`Wellcome, ${userName}`}</p>
+              <button onClick={handleLogOutButton}>
+                <img
+                  width="20px"
+                  alt="logOut-icon"
+                  src="	https://vershinaguamka.ru/imgs/rools/271-2715393_logout.png"
+                ></img>
+              </button>
+            </div>
+          )}
+        </HeaderContainer>
       </Header>
       <Outlet />
     </>
