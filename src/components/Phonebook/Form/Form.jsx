@@ -1,7 +1,7 @@
 import shortid from 'shortid';
 import React from 'react';
 import { useState } from 'react';
-import { setContactsData } from 'redux/Phonebook/contactsOperations';
+import { setContactsData } from '../../../redux/Auth/Api/Api';
 import { useDispatch } from 'react-redux';
 import { AddButton } from '../AddButton/AddButton';
 import {

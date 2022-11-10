@@ -21,7 +21,7 @@ export const removeContact = async id => {
   return data;
 };
 
-export const thunkFetchContacts = createAsyncThunk(
+export const getContactsData = createAsyncThunk(
   'contacts/get',
   async (_, thunkAPI) => {
     try {
@@ -32,23 +32,23 @@ export const thunkFetchContacts = createAsyncThunk(
     }
   }
 );
-export const thunkAddContact = createAsyncThunk(
+export const setContactsData = createAsyncThunk(
   'contacts/add',
-  async (_, rejectWithValue) => {
+  async (data, rejectWithValue) => {
     try {
-      const data = await addContact();
-      return data;
+      const result = await addContact(data);
+      return result;
     } catch (error) {
       return rejectWithValue(error);
     }
   }
 );
-export const thunkRemoveContact = createAsyncThunk(
+export const deleteContactsData = createAsyncThunk(
   'contacts/remove',
-  async (_, rejectWithValue) => {
+  async (id, rejectWithValue) => {
     try {
-      const data = await removeContact();
-      return data;
+      await removeContact(id);
+      return id;
     } catch (error) {
       return rejectWithValue(error);
     }

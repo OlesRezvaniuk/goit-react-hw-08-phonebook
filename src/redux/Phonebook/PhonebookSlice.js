@@ -3,7 +3,7 @@ import {
   deleteContactsData,
   getContactsData,
   setContactsData,
-} from './contactsOperations.js';
+} from '../Auth/Api/Api';
 
 const initialState = {
   items: [],
