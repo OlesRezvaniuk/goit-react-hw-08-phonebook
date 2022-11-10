@@ -15,7 +15,12 @@ export const Layout = () => {
   return (
     <>
       <header style={{ display: 'flex' }}>
-        <Link to="/">phonebook</Link>
+        {isLoggin === true ? (
+          <Link to="/contacts">phonebook</Link>
+        ) : (
+          <Link to="/">phonebook</Link>
+        )}
+
         {isLoggin || (
           <>
             <Link to="/login">

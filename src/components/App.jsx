@@ -6,10 +6,18 @@ import { Layout } from './Layout/Layout';
 import { RegisterPage } from 'Pages/RegisterPage';
 import { LoginPage } from 'Pages/LoginPage';
 import { HomePage } from 'Pages/HomePage';
-
+import { useDispatch } from 'react-redux';
 import { PublicRoute, PrivateRoute } from './Routes/Routes';
+import { useEffect } from 'react';
+import authOperations from 'redux/RepetaApi';
 
 export const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(authOperations.refresh());
+  }, [dispatch]);
+
   return (
     <>
       <Routes>
