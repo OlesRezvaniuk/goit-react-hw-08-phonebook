@@ -14,7 +14,9 @@ export const HomePageSection = () => {
   return (
     <section style={{ textAlign: 'center' }}>
       <Container>
-        <PageTitle>Phonebook</PageTitle>
+        <PageTitle>
+          <span style={{ color: '#3f75aa' }}>P</span>honebook
+        </PageTitle>
         <img
           alt="gif"
           height="200px"
