@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import authOperations from '../RepetaApi';
+import authOperations from '../connections-api.herokuapp';
 import storage from 'redux-persist/lib/storage';
 import { persistReducer } from 'redux-persist';
 

@@ -3,13 +3,13 @@ import { Phonebook } from './Phonebook/Phonebook';
 import { Routes } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import { Layout } from './Layout/Layout';
-import { RegisterPage } from 'Pages/RegisterPage/RegisterPage';
-import { LoginPage } from 'Pages/LoginPage/LoginPage';
-import { HomePage } from 'Pages/HomePage/HomePage';
+import { RegisterPage } from 'Pages/RegisterPage';
+import { LoginPage } from 'Pages/LoginPage';
+import { HomePage } from 'Pages/HomePage';
 import { useDispatch } from 'react-redux';
 import { PublicRoute, PrivateRoute } from './Routes/Routes';
 import { useEffect } from 'react';
-import authOperations from 'redux/RepetaApi';
+import authOperations from 'redux/connections-api.herokuapp';
 
 export const App = () => {
   const dispatch = useDispatch();

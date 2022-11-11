@@ -15,12 +15,14 @@ export const Container = styled.div`
 
 export const LinkStyled = styled(Link)`
   text-decoration: none;
-  color: black;
+  display: inline-block;
+  color: #81a9d0;
   font-weight: 500;
   transition: 250ms;
+  margin-bottom: 10px;
   &:hover,
   &:focus {
-    border-bottom: 1px solid grey;
+    color: #4f4c4c;
   }
 `;
 

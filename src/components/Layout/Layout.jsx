@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import authOperations from 'redux/RepetaApi';
+import authOperations from 'redux/connections-api.herokuapp';
 import {
   Header,
   HeaderContainer,

@@ -5,11 +5,12 @@ import {
   LinkStyled,
   ReactText,
   LinkStyledCont,
-} from './HomePage.styled';
+} from './HomePageSection.styled';
+import { selectorToken, selectorUserName } from 'redux/Auth/Selectors';
 
-export const HomePage = () => {
-  const token = useSelector(state => state.auth.token);
-  const userName = useSelector(state => state.auth.user.name);
+export const HomePageSection = () => {
+  const token = useSelector(selectorToken);
+  const userName = useSelector(selectorUserName);
   return (
     <section style={{ textAlign: 'center' }}>
       <Container>
@@ -35,7 +36,7 @@ export const HomePage = () => {
         ) : (
           <>
             <LinkStyled to="login">Sing In</LinkStyled>
-            <span style={{ color: 'black' }}>/</span>
+            <span style={{ color: '#81a9d0' }}>/</span>
             <LinkStyled to="register">Try now!</LinkStyled>
           </>
         )}

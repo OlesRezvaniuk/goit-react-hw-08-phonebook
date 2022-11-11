@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import authOperations from 'redux/RepetaApi';
+import authOperations from 'redux/connections-api.herokuapp';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import {
@@ -11,13 +11,14 @@ import {
   FormElName,
   FormInput,
   RemoveBtn,
-} from './LoginPage.styled';
+} from './LoginPageSection.styled';
+import { selectorToken } from 'redux/Auth/Selectors';
 
-export const LoginPage = () => {
+export const LoginPageSection = () => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const token = useSelector(state => state.auth.token);
+  const token = useSelector(selectorToken);
 
   const handleEmailLogin = e => {
     setEmail(e.currentTarget.value);

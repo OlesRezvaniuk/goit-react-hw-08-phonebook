@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import authOperations from 'redux/RepetaApi';
+import authOperations from 'redux/connections-api.herokuapp';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import {
@@ -12,13 +12,14 @@ import {
   FormInput,
   RemoveBtn,
 } from './RegisterPage.styled';
+import { selectorToken } from 'redux/Auth/Selectors';
 
-export const RegisterPage = () => {
+export const RegisterPageSection = () => {
   const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const token = useSelector(state => state.auth.token);
+  const token = useSelector(selectorToken);
 
   const handleNameChange = e => {
     setName(e.currentTarget.value);
@@ -36,7 +37,6 @@ export const RegisterPage = () => {
     setEmail('');
     setPassword('');
   };
-
   return (
     <>
       {token ? (
