@@ -4,7 +4,7 @@ import { Routes } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import { Layout } from './Layout/Layout';
 import { RegisterPage } from 'Pages/RegisterPage/RegisterPage';
-import { LoginPage } from 'Pages/LoginPage';
+import { LoginPage } from 'Pages/LoginPage/LoginPage';
 import { HomePage } from 'Pages/HomePage/HomePage';
 import { useDispatch } from 'react-redux';
 import { PublicRoute, PrivateRoute } from './Routes/Routes';

@@ -49,10 +49,10 @@ export const FormInput = styled.input`
   cursor: pointer;
   color: #464646;
   font-weight: 700;
-  background-color: white ;important;
 `;
 
 export const RemoveBtn = styled.button`
+font-weight: 600;
   border: none;
   border-radius: 2px;
   background-color: white;
@@ -67,7 +67,7 @@ export const RemoveBtn = styled.button`
   gap: 4px;
   align-items: center;
   cursor: pointer;
-    color: #464646;
+    color: #7e7e7e;
   box-shadow:  0px 0px 2px #81a9d0;
     transition: 250ms;
   &:hover,

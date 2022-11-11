@@ -30,12 +30,20 @@ export const Layout = () => {
             <Logo>P</Logo>
           </LinkStyled>
 
-          {token && <LinkContacts to="/contacts">Contacts</LinkContacts>}
+          {token && (
+            <LinkContacts
+              style={{
+                borderLeft: '1px solid #3c67c3',
+                borderRight: '1px solid #3c67c3',
+              }}
+              to="/contacts"
+            >
+              Contacts
+            </LinkContacts>
+          )}
           {token === null ? (
             <LinkBox>
-              <PageLinks style={{ border: 'none' }} to="/login">
-                Sing In
-              </PageLinks>
+              <PageLinks to="/login">Sing In</PageLinks>
               <PageLinks to="/register">Sing Up</PageLinks>
             </LinkBox>
           ) : (

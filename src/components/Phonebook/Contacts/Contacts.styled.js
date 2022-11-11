@@ -54,7 +54,7 @@ export const ContactBtn = styled.button`
     border: none;
   border-radius: 2px;
   background-color: white;
-  box-shadow: inset 0px 0px 2px 0px #81a9d0;
+  box-shadow:  0px 0px 2px 0px #81a9d0;
   height: 16.5px;;
   padding: 0px 5px;
   background-color: white;
@@ -69,5 +69,5 @@ export const ContactBtn = styled.button`
     // text-transform: uppercase;
   
   &:hover {
-  box-shadow: inset 0px 0px 4px 0px #81a9d0;
+  box-shadow: inset 0px 0px 2px 0px #81a9d0;
 `;

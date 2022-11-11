@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 export const Header = styled.header`
   display: flex;
@@ -58,7 +58,7 @@ export const LinkBox = styled.div`
   margin-left: auto;
 `;
 
-export const PageLinks = styled(Link)`
+export const PageLinks = styled(NavLink)`
   display: flex;
   align-items: center;
   text-decoration: none;
@@ -66,14 +66,15 @@ export const PageLinks = styled(Link)`
   border-radius: 4px;
   height: 24px;
   padding: 3px 3px 5px 3px;
-  color: black;
   font-weight: 500;
-  border: 1px solid black;
+  color: grey;
   &:hover,
   &:focus {
-    color: grey;
-    border: 1px solid grey;
+    color: #464646;
   }
+  &.active {
+    border: 1px solid #81a9d0;
+    color: #81a9d0;
 `;
 
 export const LeaveBtn = styled.button`

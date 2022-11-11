@@ -19,9 +19,28 @@ export const HomePage = () => {
           height="200px"
           src="https://thumbs.gfycat.com/MatureGiganticAlbertosaurus-size_restricted.gif"
         ></img>
+        {token !== null ? (
+          <>
+            <p>
+              <span style={{ fontWeight: '500', fontSize: '17px' }}>
+                {userName}
+              </span>
+              <br />
+              You are logined
+            </p>
+            <LinkStyledCont to="/contacts">
+              <p>continue?</p>
+            </LinkStyledCont>
+          </>
+        ) : (
+          <>
+            <LinkStyled to="login">Sing In</LinkStyled>
+            <span style={{ color: 'black' }}>/</span>
+            <LinkStyled to="register">Try now!</LinkStyled>
+          </>
+        )}
         <p style={{ fontWeight: '500' }}>
           Fast, Secure and Mobile Friendly
-          <br />
           <ReactText>
             {' '}
             <img
@@ -34,23 +53,6 @@ export const HomePage = () => {
           </ReactText>
         </p>
         <br />
-        {token !== null ? (
-          <>
-            <p>
-              <span style={{ fontWeight: '500' }}>{userName}</span> You are
-              logined
-            </p>
-            <LinkStyledCont to="/contacts">
-              <p>continue?</p>
-            </LinkStyledCont>
-          </>
-        ) : (
-          <>
-            <LinkStyled to="login">Sing Up</LinkStyled>
-            <span style={{ color: 'black' }}>/</span>
-            <LinkStyled to="register">Try now!</LinkStyled>
-          </>
-        )}
       </Container>
     </section>
   );

@@ -72,7 +72,7 @@ export const RegisterPage = () => {
               <FormElName>Password</FormElName>
               <FormInput
                 name="password"
-                placeholder="Should be at least 7 characters"
+                placeholder="Enter your password"
                 aria-label="Input for your password"
                 type="password"
                 variant="standard"

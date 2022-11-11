@@ -36,16 +36,19 @@ export const LinkStyledCont = styled(Link)`
   display: flex;
   margin: auto;
   margin-top: 5px;
+  margin-bottom: 10px;
   padding: 3px;
   border-radius: 3px;
-  box-shadow: 0px 0px 2px grey;
   transition: 250ms;
   align-items: center;
   color: grey;
+  font-weight: 600;
+  box-shadow: 0px 0px 2px grey;
+  color: black;
 
   &:hover,
   &:focus {
-    box-shadow: 0px 0px 4px grey;
-    color: black;
+    box-shadow: inset 0px 0px 2px #81a9d0;
+    color: #81a9d0;
   }
 `;

@@ -16,11 +16,11 @@ export const AddBtn = styled.button`
   align-items: center;
   cursor: pointer;
   color: #81a9d0;
-  box-shadow: inset 0px 0px 2px #81a9d0;
+  box-shadow:  0px 0px 2px #81a9d0;
     transition: 250ms;
   &:hover,
   &:focus {
-  box-shadow: inset 0px 0px 4px #81a9d0;
+  box-shadow: inset 0px 0px 2px #81a9d0;
 `;
 
 export const AddBtnText = styled.span`

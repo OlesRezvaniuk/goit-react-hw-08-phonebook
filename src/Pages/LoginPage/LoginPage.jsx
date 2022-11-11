@@ -3,6 +3,15 @@ import { useDispatch } from 'react-redux';
 import authOperations from 'redux/RepetaApi';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import {
+  Container,
+  Title,
+  FormEl,
+  FormLabel,
+  FormElName,
+  FormInput,
+  RemoveBtn,
+} from './LoginPage.styled';
 
 export const LoginPage = () => {
   const dispatch = useDispatch();
@@ -29,13 +38,12 @@ export const LoginPage = () => {
           You are already sing in, <Link to="/contacts">to Contacts</Link>
         </p>
       ) : (
-        <>
-          <h1>Log in to Phonebook</h1>
-
-          <form onSubmit={handleLoginSubmit}>
-            <label>
-              <span>Email</span>
-              <input
+        <Container>
+          <Title>Log in to Phonebook</Title>
+          <FormEl onSubmit={handleLoginSubmit}>
+            <FormLabel>
+              <FormElName>Email</FormElName>
+              <FormInput
                 type="email"
                 name="email"
                 placeholder="Your e-mail"
@@ -43,12 +51,11 @@ export const LoginPage = () => {
                 onChange={handleEmailLogin}
                 value={email}
               />
-            </label>
+            </FormLabel>
 
-            <br />
-            <label>
-              <span>Password</span>
-              <input
+            <FormLabel>
+              <FormElName>Password</FormElName>
+              <FormInput
                 type="password"
                 name="password"
                 placeholder="Your password"
@@ -56,11 +63,10 @@ export const LoginPage = () => {
                 onChange={handlePasswordLogin}
                 value={password}
               />
-            </label>
-            <br />
-            <button>Log in</button>
-          </form>
-        </>
+            </FormLabel>
+            <RemoveBtn>Log in</RemoveBtn>
+          </FormEl>
+        </Container>
       )}
     </>
   );
