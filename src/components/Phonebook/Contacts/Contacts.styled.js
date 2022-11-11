@@ -19,6 +19,14 @@ export const ContactsNone = styled.h2`
 `;
 
 export const ContactsList = styled.ul`
+  @media screen and (min-width: 640px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media screen and (min-width: 900px) {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
   list-style: none;
   padding: 0;
   margin: 0;

@@ -17,6 +17,9 @@ export const HeaderContainer = styled.div`
   @media screen and (min-width: 640px) {
     width: 640px;
   }
+  @media screen and (min-width: 900px) {
+    width: 900px;
+  }
   margin: auto;
   display: flex;
   padding: 0 15px;
