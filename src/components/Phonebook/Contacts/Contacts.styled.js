@@ -24,6 +24,7 @@ export const ContactsList = styled.ul`
   margin: 0;
   display: flex;
   flex-direction: column;
+  gap: 5px;
 `;
 
 export const ContactName = styled.h3`
