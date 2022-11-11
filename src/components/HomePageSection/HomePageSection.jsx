@@ -42,7 +42,7 @@ export const HomePageSection = () => {
             <LinkStyled to="register">Try now!</LinkStyled>
           </>
         )}
-        <p style={{ fontWeight: '500', fontSize: '16px' }}>
+        <p style={{ fontWeight: '500', fontSize: '16px', marginTop: '60px' }}>
           Fast, Secure and Mobile Friendly
           <ReactText>
             {' '}
