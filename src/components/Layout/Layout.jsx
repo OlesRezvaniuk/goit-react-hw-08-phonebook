@@ -47,7 +47,13 @@ export const Layout = () => {
               <PageLinks to="/register">Sing Up</PageLinks>
             </LinkBox>
           ) : (
-            <div style={{ display: 'flex', marginLeft: 'auto' }}>
+            <div
+              style={{
+                display: 'flex',
+                marginLeft: 'auto',
+                fontStyle: 'italic',
+              }}
+            >
               <LoginName>{userName}</LoginName>
               <LeaveBtn onClick={handleLogOutButton}>
                 <BtnIcon

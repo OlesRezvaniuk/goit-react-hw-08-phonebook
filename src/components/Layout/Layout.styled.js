@@ -10,7 +10,10 @@ export const Header = styled.header`
 `;
 
 export const HeaderContainer = styled.div`
-  width: 290px;
+  width: 320px;
+  @media screen and (min-width: 480px) {
+    width: 480px;
+  }
   margin: auto;
   display: flex;
   padding: 0 15px;
@@ -29,9 +32,9 @@ export const Logo = styled.p`
   position: relative;
   margin-right: 20px;
   z-index: 10;
-  font-size: 32px;
+  font-size: 33px;
   font-weight: bold;
-  bottom: -4px;
+  bottom: -2px;
 
   ::before {
     position: absolute;
@@ -67,6 +70,7 @@ export const PageLinks = styled(NavLink)`
   height: 24px;
   padding: 3px 3px 5px 3px;
   font-weight: 500;
+  font-size: 18px;
   color: grey;
   &:hover,
   &:focus {

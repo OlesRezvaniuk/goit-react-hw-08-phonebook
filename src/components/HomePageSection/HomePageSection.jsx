@@ -25,7 +25,7 @@ export const HomePageSection = () => {
         {token !== null ? (
           <>
             <p>
-              <span style={{ fontWeight: '500', fontSize: '17px' }}>
+              <span style={{ fontWeight: '500', fontSize: '18px' }}>
                 {userName}
               </span>
               <br />
@@ -42,7 +42,7 @@ export const HomePageSection = () => {
             <LinkStyled to="register">Try now!</LinkStyled>
           </>
         )}
-        <p style={{ fontWeight: '500' }}>
+        <p style={{ fontWeight: '500', fontSize: '16px' }}>
           Fast, Secure and Mobile Friendly
           <ReactText>
             {' '}

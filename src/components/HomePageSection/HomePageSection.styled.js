@@ -6,7 +6,7 @@ export const PageTitle = styled.h1`
 `;
 
 export const Container = styled.div`
-  width: 290px;
+  width: 320px;
   margin: auto;
   padding: 15px;
   position: relative;
@@ -20,6 +20,7 @@ export const LinkStyled = styled(Link)`
   font-weight: 500;
   transition: 250ms;
   margin-bottom: 10px;
+  font-size: 18px;
   &:hover,
   &:focus {
     color: #4f4c4c;
@@ -45,6 +46,7 @@ export const LinkStyledCont = styled(Link)`
   align-items: center;
   color: grey;
   font-weight: 600;
+  font-size: 18px;
   box-shadow: 0px 0px 2px grey;
   color: black;
 

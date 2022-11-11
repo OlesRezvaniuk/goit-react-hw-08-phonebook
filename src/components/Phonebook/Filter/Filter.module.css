@@ -14,6 +14,7 @@
   box-shadow: inset 0px 0px 2px #81a9d0;
   border-radius: 2px;
   transition: 250ms;
+  height: 30px;
 }
 
 .filter__label:hover {
@@ -24,28 +25,31 @@
   position: absolute;
   left: 0px;
   display: flex;
-  height: 23.5px;
+  height: 30px;
   align-items: center;
   top: 0px;
   background-color: #81a9d0;
   width: 50px;
   justify-content: center;
   transition: 250ms;
-  font-size: 14px;
   font-weight: 700;
+  font-size: 16px;
   color: white;
   cursor: pointer;
+  width: 60px;
 }
 
 .filter__input {
-  position: relative;
+  poisition: relative;
   display: block;
   border: none;
   outline: none;
-  margin-left: 47px;
+  margin-left: 55px;
   width: inherit;
   width: 205px;
   padding-left: 5px;
   cursor: pointer;
   color: #81a9d0;
+  font-weight: 700;
+  height: 100%;
 }
