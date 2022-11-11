@@ -5,4 +5,5 @@ export const PhoneBookBox = styled.div`
   padding: 15px;
   margin: auto;
   position: relative;
+  max-width: 900px;
 `;
