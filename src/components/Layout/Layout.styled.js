@@ -11,6 +11,12 @@ export const Header = styled.header`
 
 export const HeaderContainer = styled.div`
   width: 320px;
+  @media screen and (min-width: 480px) {
+    width: 480px;
+  }
+  @media screen and (min-width: 640px) {
+    width: 640px;
+  }
   margin: auto;
   display: flex;
   padding: 0 15px;
