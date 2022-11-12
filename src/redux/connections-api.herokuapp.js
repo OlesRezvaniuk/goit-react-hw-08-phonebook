@@ -53,7 +53,7 @@ const refresh = createAsyncThunk('auth/refresh', async (_, thunkAPI) => {
     return data;
   } catch (error) {
     token.unset();
-    alert(error.message);
+    // alert(error.message);
   }
 });
 
