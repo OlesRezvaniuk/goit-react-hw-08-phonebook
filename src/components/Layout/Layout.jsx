@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import authOperations from 'redux/connections-api.herokuapp';
+import { selectorToken, selectorUserName } from 'redux/Auth/Selectors';
 import {
   Header,
   HeaderContainer,
@@ -16,11 +17,13 @@ import {
 
 export const Layout = () => {
   const dispatch = useDispatch();
-  const token = useSelector(state => state.auth.token);
-  const userName = useSelector(state => state.auth.user.name);
+  const token = useSelector(selectorToken);
+  const userName = useSelector(selectorUserName);
 
   const handleLogOutButton = () => {
-    dispatch(authOperations.logout());
+    if (token !== null || userName !== undefined) {
+      dispatch(authOperations.logout());
+    }
   };
   return (
     <>

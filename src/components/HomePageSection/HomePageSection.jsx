@@ -11,6 +11,7 @@ import { selectorToken, selectorUserName } from 'redux/Auth/Selectors';
 export const HomePageSection = () => {
   const token = useSelector(selectorToken);
   const userName = useSelector(selectorUserName);
+
   return (
     <section style={{ textAlign: 'center' }}>
       <Container>
@@ -22,7 +23,7 @@ export const HomePageSection = () => {
           height="200px"
           src="https://thumbs.gfycat.com/MatureGiganticAlbertosaurus-size_restricted.gif"
         ></img>
-        {token !== null ? (
+        {token || userName ? (
           <>
             <p>
               <span style={{ fontWeight: '500', fontSize: '18px' }}>

@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import authOperations from 'redux/connections-api.herokuapp';
+import { selectorToken, selectorUserName } from 'redux/Auth/Selectors';
 import {
   Container,
   Title,
@@ -16,6 +17,8 @@ export const RegisterPageSection = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const token = useSelector(selectorToken);
+  const userName = useSelector(selectorUserName);
 
   const handleNameChange = e => {
     setName(e.currentTarget.value);
@@ -28,10 +31,12 @@ export const RegisterPageSection = () => {
   };
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(authOperations.register({ name, email, password }));
-    setName('');
-    setEmail('');
-    setPassword('');
+    if (token === null || userName === undefined) {
+      dispatch(authOperations.register({ name, email, password }));
+      setName('');
+      setEmail('');
+      setPassword('');
+    }
   };
   return (
     <Container>

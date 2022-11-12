@@ -1,7 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteContactsData } from 'redux/Phonebook/contactsOperations';
 import { selectorFilteredContacts } from 'redux/Phonebook/Selector';
-
 import {
   ContactsTitle,
   ContactsNone,
