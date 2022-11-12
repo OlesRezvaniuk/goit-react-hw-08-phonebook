@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import authOperations from 'redux/connections-api.herokuapp';
-import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 import {
   Container,
   Title,
@@ -12,13 +10,11 @@ import {
   FormInput,
   RemoveBtn,
 } from './LoginPageSection.styled';
-import { selectorToken } from 'redux/Auth/Selectors';
 
 export const LoginPageSection = () => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const token = useSelector(selectorToken);
 
   const handleEmailLogin = e => {
     setEmail(e.currentTarget.value);
@@ -33,42 +29,34 @@ export const LoginPageSection = () => {
     setPassword('');
   };
   return (
-    <>
-      {token ? (
-        <p>
-          You are already sing in, <Link to="/contacts">to Contacts</Link>
-        </p>
-      ) : (
-        <Container>
-          <Title>Log in to Phonebook</Title>
-          <FormEl onSubmit={handleLoginSubmit}>
-            <FormLabel>
-              <FormElName>Email</FormElName>
-              <FormInput
-                type="email"
-                name="email"
-                placeholder="Your e-mail"
-                aria-label="Input for your email"
-                onChange={handleEmailLogin}
-                value={email}
-              />
-            </FormLabel>
+    <Container>
+      <Title>Log in to Phonebook</Title>
+      <FormEl onSubmit={handleLoginSubmit}>
+        <FormLabel>
+          <FormElName>Email</FormElName>
+          <FormInput
+            type="email"
+            name="email"
+            placeholder="Your e-mail"
+            aria-label="Input for your email"
+            onChange={handleEmailLogin}
+            value={email}
+          />
+        </FormLabel>
 
-            <FormLabel>
-              <FormElName>Password</FormElName>
-              <FormInput
-                type="password"
-                name="password"
-                placeholder="Your password"
-                aria-label="Input for your password"
-                onChange={handlePasswordLogin}
-                value={password}
-              />
-            </FormLabel>
-            <RemoveBtn>Log in</RemoveBtn>
-          </FormEl>
-        </Container>
-      )}
-    </>
+        <FormLabel>
+          <FormElName>Password</FormElName>
+          <FormInput
+            type="password"
+            name="password"
+            placeholder="Your password"
+            aria-label="Input for your password"
+            onChange={handlePasswordLogin}
+            value={password}
+          />
+        </FormLabel>
+        <RemoveBtn>Log in</RemoveBtn>
+      </FormEl>
+    </Container>
   );
 };
